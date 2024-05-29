@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <limits.h>
 
+# define V 6
 // Function to print the distance array
-void printDistance(int dist[], int V)
+void printDistance(int dist[])
 {
     printf("Vertex\tDistance from Source\n");
     for (int i = 0; i < V; i++)
@@ -13,7 +14,7 @@ void printDistance(int dist[], int V)
 }
 
 // Bellman-Ford algorithm
-void bellmanFord(int V, int E, int source, int edge[][3])
+void bellmanFord(int E, int source, int edge[][3])
 {
     int dist[V];
 
@@ -53,18 +54,17 @@ void bellmanFord(int V, int E, int source, int edge[][3])
     }
 
     // Print the distance array
-    printDistance(dist, V);
+    printDistance(dist);
 }
 
 int main()
 {
-    int V = 6;
     int E = 9;
 
     int edge[][3] = {{0, 1, 6}, {0, 2, 4}, {0, 3, 5}, {2, 1, -2}, {3, 2, -2}, {1, 4, -1}, {2, 4, 3}, {3, 5, -1}, {4, 5, 3}};
 
     int source = 0;
-    bellmanFord(V, E, source, edge);
+    bellmanFord(E, source, edge);
 
     return 0;
 }
